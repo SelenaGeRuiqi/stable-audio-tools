@@ -1,0 +1,11 @@
+{
+    "dataset_type": "audio_dir",
+    "datasets": [
+        {
+            "id": "deep_house_10s",
+            "path": "./deep_house_dataset/processed_10s/",
+            "custom_metadata_module": "./custom_metadata.py"
+        }
+    ],
+    "random_crop": true
+}

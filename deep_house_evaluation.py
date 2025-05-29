@@ -17,7 +17,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Create evaluation outputs directory
-EVALUATION_OUTPUT_DIR = Path("deep_house_evaluation/output")
+EVALUATION_OUTPUT_DIR = Path("deep_house_evaluation")
 EVALUATION_OUTPUT_DIR.mkdir(exist_ok=True)
 
 class DeepHouseSpecificEvaluator:

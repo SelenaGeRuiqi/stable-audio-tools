@@ -1,17 +1,145 @@
 {
-  "model_type": "diffusion_cond",
-  "sample_size": 1323000,
-  "sample_rate": 44100,
-  "audio_channels": 2,
-  "model": {
-    "pretrained_name": "stabilityai/stable-audio-open-1.0",
-    "pretransform_ckpt_path": null
-  },
-  "training": {
-    "learning_rate": 1e-05,
-    "batch_size": 2,
-    "save_every": 1000,
-    "sample_every": 2000,
-    "demo_every": 5000
-  }
+    "model_type": "diffusion_cond",
+    "sample_size": 882000,
+    "sample_rate": 44100,
+    "audio_channels": 2,
+    "model": {
+        "pretransform": {
+            "type": "autoencoder",
+            "iterate_batch": true,
+            "config": {
+                "encoder": {
+                    "type": "dac",
+                    "config": {
+                        "in_channels": 2,
+                        "latent_dim": 128,
+                        "d_model": 128,
+                        "strides": [4, 4, 8, 8]
+                    }
+                },
+                "decoder": {
+                    "type": "dac",
+                    "config": {
+                        "out_channels": 2,
+                        "latent_dim": 64,
+                        "channels": 1536,
+                        "rates": [8, 8, 4, 4]
+                    }
+                },
+                "bottleneck": {
+                    "type": "vae"
+                },
+                "latent_dim": 64,
+                "downsampling_ratio": 1024,
+                "io_channels": 2
+            }
+        },
+        "conditioning": {
+            "configs": [
+                {
+                    "id": "prompt",
+                    "type": "t5",
+                    "config": {
+                        "t5_model_name": "google-t5/t5-base",
+                        "max_length": 77,
+                        "project_out": true
+                    }
+                },
+                {
+                    "id": "seconds_start",
+                    "type": "number",
+                    "config": {
+                        "min_val": 0,
+                        "max_val": 512
+                    }
+                },
+                {
+                    "id": "seconds_total",
+                    "type": "number",
+                    "config": {
+                        "min_val": 0,
+                        "max_val": 512
+                    }
+                }
+            ],
+            "cond_dim": 768
+        },
+        "diffusion": {
+            "type": "dit",
+            "config": {
+                "io_channels": 64,
+                "patch_size": 1,
+                "embed_dim": 1536,
+                "cond_token_dim": 768,
+                "project_cond_tokens": false,
+                "global_cond_dim": 1536,
+                "depth": 24,
+                "num_heads": 24,
+                "adm_in_channels": 2048,
+                "context_embedder_config": {
+                    "id": "prompt",
+                    "type": "t5",
+                    "config": {
+                        "t5_model_name": "google-t5/t5-base",
+                        "max_length": 77,
+                        "project_out": true
+                    }
+                }
+            }
+        },
+        "io_channels": 64
+    },
+    "training": {
+        "learning_rate": 1e-4,
+        "warmup_steps": 1000,
+        "optimizer": "adamw",
+        "optimizer_configs": {
+            "adamw": {
+                "betas": [0.9, 0.999],
+                "weight_decay": 1e-3
+            }
+        },
+        "loss_configs": {
+            "diffusion": {
+                "type": "rectified_flow",
+                "config": {
+                    "sigma_min": 1e-4,
+                    "sigma_max": 1000,
+                    "sigma_data": 1,
+                    "timestep_sampler": {
+                        "type": "uniform"
+                    }
+                }
+            }
+        },
+        "demo": {
+            "demo_every": 500,
+            "demo_steps": 100,
+            "demo_samples": 3,
+            "demo_conditioning": [
+                [
+                    {
+                        "prompt": "deep house with heavy bass and synthesizer, electronic dance music, upbeat tempo",
+                        "seconds_start": 0,
+                        "seconds_total": 20
+                    }
+                ],
+                [
+                    {
+                        "prompt": "deep house music with electronic beats, rhythmic bass line, 128 BPM",
+                        "seconds_start": 0,
+                        "seconds_total": 20
+                    }
+                ],
+                [
+                    {
+                        "prompt": "deep house track with ambient synthesizer pads and driving kick drum",
+                        "seconds_start": 0,
+                        "seconds_total": 20
+                    }
+                ]
+            ],
+            "demo_cfg_scales": [3, 6, 9]
+        }
+    }
 }

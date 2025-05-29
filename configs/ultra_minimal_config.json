@@ -1,6 +1,0 @@
-{
-  "model_type": "diffusion_cond",
-  "sample_size": 882000,
-  "sample_rate": 44100,
-  "audio_channels": 2
-}

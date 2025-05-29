@@ -1,44 +1,44 @@
-filename,prompt
-deep_house_001_01.wav,"electronic house music, 123 BPM, positive, seamless transitions, spatial imaging"
-deep_house_001_02.wav,"electronic house music, 125 BPM, uplifting, balanced mix, balanced frequencies"
-deep_house_001_03.wav,"house music, 121 BPM, flowing pulse, layered soundscape, late night energy"
-deep_house_002_01.wav,"house music, 120 BPM, flowing pulse, smooth transitions, dancefloor groove"
-deep_house_002_02.wav,"deep house track, 128 BPM, vintage-inspired, rich chord work, contemplative mood"
-deep_house_002_03.wav,"deep house, 125 BPM, electric piano touches, evolving textures, professional quality"
-deep_house_003_01.wav,"deep house track, 123 BPM, crisp production, jazzy chord progressions, controlled dynamics"
-deep_house_003_02.wav,"electronic house music, 127 BPM, soulful, seamless transitions, balanced frequencies"
-deep_house_003_03.wav,"electronic house music, 124 BPM, euphoric, seamless transitions, spatial imaging"
-deep_house_004_01.wav,"deep house, 127 BPM, string elements, dynamic arrangement, professional quality"
-deep_house_004_02.wav,"deep house music, 122 BPM, melodic bassline, steady groove, warm textures"
-deep_house_004_03.wav,"deep house music, 122 BPM, warm rolling bassline, steady groove, ethereal ambience"
-deep_house_005_01.wav,"electronic house music, 125 BPM, soulful, dynamic build, cohesive blend"
-deep_house_005_02.wav,"deep house music, 126 BPM, deep sub bass, steady groove, lush atmospheric pads"
-deep_house_005_03.wav,"deep house music, 121 BPM, warm rolling bassline, steady groove, lush atmospheric pads"
-deep_house_006_01.wav,"electronic house music, 124 BPM, soulful, seamless transitions, clear separation"
-deep_house_006_02.wav,"deep house music, 125 BPM, smooth bass foundation, steady groove, ethereal ambience"
-deep_house_006_03.wav,"deep house music, 123 BPM, deep sub bass, hypnotic rhythm, dreamy pads"
-deep_house_007_01.wav,"deep house, 125 BPM, filtered vocals, layered composition, professional quality"
-deep_house_007_02.wav,"deep house, 126 BPM, filtered vocals, sonic richness, professional quality"
-deep_house_007_03.wav,"deep house, 121 BPM, percussion layers, detailed production, professional quality"
-deep_house_008_01.wav,"electronic house music, 126 BPM, euphoric, seamless transitions, wide stereo field"
-deep_house_008_02.wav,"house music, 124 BPM, locked groove, layered soundscape, intimate club setting"
-deep_house_008_03.wav,"electronic house music, 124 BPM, euphoric, dynamic build, professional mixdown"
-deep_house_009_01.wav,"house music, 122 BPM, flowing pulse, smooth transitions, intimate club setting"
-deep_house_009_02.wav,"deep house music, 121 BPM, warm rolling bassline, syncopated beats, warm textures"
-deep_house_009_03.wav,"deep house music, 123 BPM, smooth bass foundation, syncopated beats, warm textures"
-deep_house_010_01.wav,"electronic house music, 121 BPM, euphoric, dynamic build, spatial imaging"
-deep_house_010_02.wav,"deep house track, 128 BPM, modern clarity, rich chord work, moderate energy flow"
-deep_house_010_03.wav,"deep house, 125 BPM, synthesizer pads, evolving textures, professional quality"
-deep_house_011_01.wav,"deep house, 126 BPM, percussion layers, sonic richness, professional quality"
-deep_house_011_02.wav,"house music, 128 BPM, infectious groove, layered soundscape, after hours vibe"
-deep_house_011_03.wav,"deep house, 125 BPM, synthesizer pads, sonic richness, professional quality"
-deep_house_012_01.wav,"deep house music, 122 BPM, smooth bass foundation, steady groove, lush atmospheric pads"
-deep_house_012_02.wav,"house music, 123 BPM, locked groove, smooth transitions, after hours vibe"
-deep_house_012_03.wav,"house music, 120 BPM, flowing pulse, layered soundscape, dancefloor groove"
-deep_house_013_01.wav,"deep house music, 123 BPM, melodic bassline, hypnotic rhythm, intimate atmosphere"
-deep_house_014_01.wav,"deep house track, 127 BPM, organic production, harmonic layers, moderate energy flow"
-deep_house_014_02.wav,"deep house, 126 BPM, ambient textures, layered composition, professional quality"
-deep_house_014_03.wav,"deep house track, 126 BPM, crisp production, sophisticated harmonies, controlled dynamics"
-deep_house_015_01.wav,"house music, 122 BPM, subtle swing, layered soundscape, dancefloor groove"
-deep_house_015_02.wav,"electronic house music, 128 BPM, contemplative, thoughtful composition, professional mixdown"
-deep_house_015_03.wav,"deep house, 128 BPM, ambient textures, dynamic arrangement, professional quality"
+path,prompt,seconds_start,seconds_total
+deep_house_dataset/processed_20s/deep_house_001_01.wav,"electronic house music, 123 BPM, positive, seamless transitions, spatial imaging",0,20
+deep_house_dataset/processed_20s/deep_house_001_02.wav,"electronic house music, 125 BPM, uplifting, balanced mix, balanced frequencies",0,20
+deep_house_dataset/processed_20s/deep_house_001_03.wav,"house music, 121 BPM, flowing pulse, layered soundscape, late night energy",0,20
+deep_house_dataset/processed_20s/deep_house_002_01.wav,"house music, 120 BPM, flowing pulse, smooth transitions, dancefloor groove",0,20
+deep_house_dataset/processed_20s/deep_house_002_02.wav,"deep house track, 128 BPM, vintage-inspired, rich chord work, contemplative mood",0,20
+deep_house_dataset/processed_20s/deep_house_002_03.wav,"deep house, 125 BPM, electric piano touches, evolving textures, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_003_01.wav,"deep house track, 123 BPM, crisp production, jazzy chord progressions, controlled dynamics",0,20
+deep_house_dataset/processed_20s/deep_house_003_02.wav,"electronic house music, 127 BPM, soulful, seamless transitions, balanced frequencies",0,20
+deep_house_dataset/processed_20s/deep_house_003_03.wav,"electronic house music, 124 BPM, euphoric, seamless transitions, spatial imaging",0,20
+deep_house_dataset/processed_20s/deep_house_004_01.wav,"deep house, 127 BPM, string elements, dynamic arrangement, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_004_02.wav,"deep house music, 122 BPM, melodic bassline, steady groove, warm textures",0,20
+deep_house_dataset/processed_20s/deep_house_004_03.wav,"deep house music, 122 BPM, warm rolling bassline, steady groove, ethereal ambience",0,20
+deep_house_dataset/processed_20s/deep_house_005_01.wav,"electronic house music, 125 BPM, soulful, dynamic build, cohesive blend",0,20
+deep_house_dataset/processed_20s/deep_house_005_02.wav,"deep house music, 126 BPM, deep sub bass, steady groove, lush atmospheric pads",0,20
+deep_house_dataset/processed_20s/deep_house_005_03.wav,"deep house music, 121 BPM, warm rolling bassline, steady groove, lush atmospheric pads",0,20
+deep_house_dataset/processed_20s/deep_house_006_01.wav,"electronic house music, 124 BPM, soulful, seamless transitions, clear separation",0,20
+deep_house_dataset/processed_20s/deep_house_006_02.wav,"deep house music, 125 BPM, smooth bass foundation, steady groove, ethereal ambience",0,20
+deep_house_dataset/processed_20s/deep_house_006_03.wav,"deep house music, 123 BPM, deep sub bass, hypnotic rhythm, dreamy pads",0,20
+deep_house_dataset/processed_20s/deep_house_007_01.wav,"deep house, 125 BPM, filtered vocals, layered composition, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_007_02.wav,"deep house, 126 BPM, filtered vocals, sonic richness, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_007_03.wav,"deep house, 121 BPM, percussion layers, detailed production, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_008_01.wav,"electronic house music, 126 BPM, euphoric, seamless transitions, wide stereo field",0,20
+deep_house_dataset/processed_20s/deep_house_008_02.wav,"house music, 124 BPM, locked groove, layered soundscape, intimate club setting",0,20
+deep_house_dataset/processed_20s/deep_house_008_03.wav,"electronic house music, 124 BPM, euphoric, dynamic build, professional mixdown",0,20
+deep_house_dataset/processed_20s/deep_house_009_01.wav,"house music, 122 BPM, flowing pulse, smooth transitions, intimate club setting",0,20
+deep_house_dataset/processed_20s/deep_house_009_02.wav,"deep house music, 121 BPM, warm rolling bassline, syncopated beats, warm textures",0,20
+deep_house_dataset/processed_20s/deep_house_009_03.wav,"deep house music, 123 BPM, smooth bass foundation, syncopated beats, warm textures",0,20
+deep_house_dataset/processed_20s/deep_house_010_01.wav,"electronic house music, 121 BPM, euphoric, dynamic build, spatial imaging",0,20
+deep_house_dataset/processed_20s/deep_house_010_02.wav,"deep house track, 128 BPM, modern clarity, rich chord work, moderate energy flow",0,20
+deep_house_dataset/processed_20s/deep_house_010_03.wav,"deep house, 125 BPM, synthesizer pads, evolving textures, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_011_01.wav,"deep house, 126 BPM, percussion layers, sonic richness, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_011_02.wav,"house music, 128 BPM, infectious groove, layered soundscape, after hours vibe",0,20
+deep_house_dataset/processed_20s/deep_house_011_03.wav,"deep house, 125 BPM, synthesizer pads, sonic richness, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_012_01.wav,"deep house music, 122 BPM, smooth bass foundation, steady groove, lush atmospheric pads",0,20
+deep_house_dataset/processed_20s/deep_house_012_02.wav,"house music, 123 BPM, locked groove, smooth transitions, after hours vibe",0,20
+deep_house_dataset/processed_20s/deep_house_012_03.wav,"house music, 120 BPM, flowing pulse, layered soundscape, dancefloor groove",0,20
+deep_house_dataset/processed_20s/deep_house_013_01.wav,"deep house music, 123 BPM, melodic bassline, hypnotic rhythm, intimate atmosphere",0,20
+deep_house_dataset/processed_20s/deep_house_014_01.wav,"deep house track, 127 BPM, organic production, harmonic layers, moderate energy flow",0,20
+deep_house_dataset/processed_20s/deep_house_014_02.wav,"deep house, 126 BPM, ambient textures, layered composition, professional quality",0,20
+deep_house_dataset/processed_20s/deep_house_014_03.wav,"deep house track, 126 BPM, crisp production, sophisticated harmonies, controlled dynamics",0,20
+deep_house_dataset/processed_20s/deep_house_015_01.wav,"house music, 122 BPM, subtle swing, layered soundscape, dancefloor groove",0,20
+deep_house_dataset/processed_20s/deep_house_015_02.wav,"electronic house music, 128 BPM, contemplative, thoughtful composition, professional mixdown",0,20
+deep_house_dataset/processed_20s/deep_house_015_03.wav,"deep house, 128 BPM, ambient textures, dynamic arrangement, professional quality",0,20

@@ -165,3 +165,6 @@ wandb/*
 
 raw_audio/
 dataset/
+
+stable-audio-open-1.0/
+stable-audio-open-small/
