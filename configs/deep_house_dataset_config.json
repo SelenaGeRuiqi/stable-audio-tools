@@ -1,0 +1,21 @@
+{
+  "dataset_type": "audio_dir",
+  "datasets": [
+    {
+      "id": "deep_house_dataset",
+      "path": "deep_house_dataset/processed_20s",
+      "sample_rate": 44100,
+      "sample_size": 882000,
+      "audio_channels": 2,
+      "random_crop": false,
+      "normalize": true,
+      "custom_metadata_module": null,
+      "metadata_module": null,
+      "prompt_column": "prompt"
+    }
+  ],
+  "random_crop": false,
+  "sample_rate": 44100,
+  "sample_size": 882000,
+  "audio_channels": 2
+}

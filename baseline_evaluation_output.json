@@ -1,0 +1,96 @@
+{
+  "evaluation_timestamp": "2025-05-29 02:29:15",
+  "target_genre": "Deep House",
+  "sample_duration": "20s",
+  "baseline": {
+    "genre_authenticity": [
+      {
+        "filename": "baseline_deep_house_01.wav",
+        "overall_authenticity": 0.9758797015185686,
+        "bpm_detected": 123.046875,
+        "bpm_score": 1.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999894000269636,
+        "harmonic_score": 0.8392121434211731,
+        "spectral_score": 1.0,
+        "production_score": 1.0,
+        "prompt": "deep house music, 124 BPM, warm rolling bassline, soft kick drum, lush atmospheric pads"
+      },
+      {
+        "filename": "baseline_deep_house_02.wav",
+        "overall_authenticity": 0.7172835464882902,
+        "bpm_detected": 61.5234375,
+        "bpm_score": 0.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999797713163866,
+        "harmonic_score": 0.8429953515529632,
+        "spectral_score": 0.9083828949206839,
+        "production_score": 1.0,
+        "prompt": "deep house track, 122 BPM, analog bass, filtered hi-hats, jazzy chord progressions, sophisticated"
+      },
+      {
+        "filename": "baseline_deep_house_03.wav",
+        "overall_authenticity": 0.9445730800049713,
+        "bpm_detected": 126.04801829268293,
+        "bpm_score": 1.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999867242451289,
+        "harmonic_score": 0.7404526710510254,
+        "spectral_score": 0.835078344982917,
+        "production_score": 1.0,
+        "prompt": "soulful deep house, 126 BPM, warm sub bass, gentle percussion, ethereal vocal samples"
+      },
+      {
+        "filename": "baseline_deep_house_04.wav",
+        "overall_authenticity": 0.7079334890842437,
+        "bpm_detected": 61.5234375,
+        "bpm_score": 0.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 1.0,
+        "harmonic_score": 0.7195565938949585,
+        "spectral_score": 1.0,
+        "production_score": 1.0,
+        "prompt": "underground deep house, 123 BPM, organic drums, warm synthesizer pads, groove-oriented"
+      },
+      {
+        "filename": "baseline_deep_house_05.wav",
+        "overall_authenticity": 0.9917724575717187,
+        "bpm_detected": 126.04801829268293,
+        "bpm_score": 1.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999892424141054,
+        "harmonic_score": 0.9451640605926513,
+        "spectral_score": 1.0,
+        "production_score": 1.0,
+        "prompt": "melodic deep house, 125 BPM, emotional chord progressions, smooth bassline, uplifting atmosphere"
+      },
+      {
+        "filename": "baseline_deep_house_06.wav",
+        "overall_authenticity": 0.9909407045156409,
+        "bpm_detected": 123.046875,
+        "bpm_score": 1.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999896087798722,
+        "harmonic_score": 0.9396185517311096,
+        "spectral_score": 1.0,
+        "production_score": 1.0,
+        "prompt": "minimal deep house, 124 BPM, subtle percussion, deep bass, hypnotic groove, spacious mix"
+      },
+      {
+        "filename": "baseline_deep_house_07.wav",
+        "overall_authenticity": 0.951935054265446,
+        "bpm_detected": 123.046875,
+        "bpm_score": 1.0,
+        "bass_score": 1.0,
+        "rhythmic_regularity": 0.9999891505844113,
+        "harmonic_score": 0.9542904138565064,
+        "spectral_score": 0.587936620700877,
+        "production_score": 1.0,
+        "prompt": "classic deep house, 122 BPM, four-on-the-floor kick, warm analog sounds, club atmosphere"
+      }
+    ],
+    "clap_score": 0.6642857142857144,
+    "consistency_score": 0.7418007258545095,
+    "avg_genre_authenticity": 0.897188290492697
+  }
+}
