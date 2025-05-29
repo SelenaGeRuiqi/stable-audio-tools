@@ -1,0 +1,9 @@
+{
+  "dataset_type": "audio_dir",
+  "path": "dataset/audio",
+  "sample_rate": 44100,
+  "sample_size": 1323000,
+  "audio_channels": 2,
+  "random_crop": false,
+  "normalize": true
+}
