@@ -1,11 +1,12 @@
 {
     "dataset_type": "audio_dir",
-    "datasets": [
-        {
-            "id": "deep_house_dataset",
-            "path": "/workspace/stable-audio-tools/deep_house_dataset/processed_20s/",
-            "custom_metadata_module": "./custom_metadata.py"
-        }
-    ],
-    "random_crop": true
-}
+    "datasets": [{
+      "id": "classical_piano_10s",
+      "path": "./classical_piano_dataset/processed_10s/",
+      "custom_metadata_module": "./classical_piano_dataset/custom_metadata.py"
+    }],
+    "random_crop": true,
+    "sample_rate": 44100,
+    "sample_size": 441000,
+    "channels": 2
+  }

@@ -97,6 +97,9 @@ def create_training_wrapper_from_config(model_config, model):
                 if discriminator_model_ckpt is not None:
                     discriminator.load_state_dict(torch.load(discriminator_model_ckpt, weights_only=True)["state_dict"], strict=False)
 
+            # Ensure discriminator is defined
+            if "discriminator" not in locals():
+                discriminator = None
             return ARCTrainingWrapper(
                 model=model,
                 teacher_model=teacher_model,

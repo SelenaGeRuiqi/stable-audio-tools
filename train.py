@@ -22,7 +22,6 @@ class ModelConfigEmbedderCallback(pl.Callback):
         checkpoint["model_config"] = self.model_config
 
 def main():
-    torch.cuda.empty_cache()
     torch.multiprocessing.set_sharing_strategy('file_system')
     args = get_all_args()
     seed = args.seed
@@ -67,8 +66,6 @@ def main():
         )
 
     model = create_model_from_config(model_config)
-    if hasattr(model, "model") and hasattr(model.model, "gradient_checkpointing_enable"):
-        model.model.gradient_checkpointing_enable()
 
     if args.pretrained_ckpt_path:
         copy_state_dict(model, load_ckpt_state_dict(args.pretrained_ckpt_path))
@@ -158,7 +155,7 @@ def main():
         callbacks=[ckpt_callback, demo_callback, exc_callback, save_model_config_callback],
         logger=logger,
         log_every_n_steps=1,
-        max_epochs=10000000,
+        max_epochs=20,
         default_root_dir=args.save_dir,
         gradient_clip_val=args.gradient_clip_val,
         reload_dataloaders_every_n_epochs = 0,

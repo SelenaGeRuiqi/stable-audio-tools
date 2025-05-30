@@ -1,0 +1,12 @@
+{
+  "dataset_name": "Piano Fine-tuning Dataset",
+  "total_clips": 1000,
+  "duration_per_clip": "10 seconds",
+  "format": "44.1kHz WAV, stereo",
+  "files": {
+    "dataset_config": "classical_piano_dataset/dataset_config.json",
+    "custom_metadata": "classical_piano_dataset/custom_metadata.py",
+    "prompts": "classical_piano_dataset/classical_piano_prompts.json",
+    "audio_dir": "classical_piano_dataset/processed_10s"
+  }
+}
