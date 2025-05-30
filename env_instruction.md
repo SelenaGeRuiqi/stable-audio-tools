@@ -26,6 +26,7 @@ pip install -e .
 pip install einops
 pip install gradio
 pip install beautifulsoup4
+pip install stable-audio-tools torch torchaudio librosa essentia-tensorflow laion_clap scipy matplotlib pandas
 conda install -c conda-forge ffmpeg -y
 
 ## Optional: install flash-attn for faster inference

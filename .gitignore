@@ -168,3 +168,5 @@ dataset/
 
 stable-audio-open-1.0/
 stable-audio-open-small/
+
+classical_piano_dataset/classical_piano_processed_10s.zip
