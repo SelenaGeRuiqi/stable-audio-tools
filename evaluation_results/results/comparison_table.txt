@@ -1,0 +1,20 @@
+================================================================================
+DETAILED METRIC COMPARISON TABLE
+================================================================================
+Metric Category           Metric Name               Baseline     Fine-tuned   Change  
+--------------------------------------------------------------------------------
+Piano Authenticity        Sustain Decay Quality     0.0084       0.0098         +17.3%
+Piano Authenticity        Frequency Range Coverage  0.1296       0.1125         -13.2%
+Musical Quality           Rhythmic Consistency      0.9677       0.9580          -1.0%
+Musical Quality           Melodic Coherence         0.2814       0.2918          +3.7%
+Musical Quality           Harmonic Progression Quality 0.6419       0.6618          +3.1%
+Musical Quality           Dynamic Expression        1.0000       1.0000          +0.0%
+Musical Quality           Phrase Structure          0.1780       0.2163         +21.6%
+Technical Quality         Signal Noise Ratio        1.0000       1.0000          +0.0%
+Technical Quality         Dynamic Range             1.0000       1.0000          +0.0%
+Technical Quality         Frequency Response        0.0404       0.0632         +56.5%
+Technical Quality         Artifacts Score           0.9880       0.9878          -0.0%
+Semantic Alignment        Prompt Adherence          0.6450       0.6000          -7.0%
+================================================================================
+
+

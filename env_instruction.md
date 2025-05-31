@@ -58,8 +58,9 @@ huggingface-cli download stabilityai/stable-audio-open-1.0 --local-dir ./stable-
 
 # 6.2. Finetune
 
-## With A6000 48G
+## With SingleA6000 62G RAM: 2 hours for 1000 steps
 
+# Train the whole model
 python train.py \
   --dataset-config classical_piano_dataset/dataset_config.json \
   --model-config ./stable-audio-open-1.0/model_config.json \
@@ -71,6 +72,19 @@ python train.py \
   --checkpoint-every 500 \
   --save-dir ./checkpoints
 
+# Freeze part of the model (T5 encoder and part of the unet)
+FREEZE_T5=true FREEZE_UNET=true UNET_FREEZE_RATIO=0.5 python train_freeze.py \
+  --dataset-config classical_piano_dataset/dataset_config.json \
+  --model-config ./stable-audio-open-1.0/model_config.json \
+  --pretrained-ckpt-path ./stable-audio-open-1.0/model.ckpt \
+  --name piano_1000_clips \
+  --batch-size 4 \
+  --accum-batches 4 \
+  --precision 16-mixed \
+  --checkpoint-every 500 \
+  --save-dir ./checkpoints
+
+
 python ./unwrap_model.py \
   --model-config ./stable-audio-open-1.0/model_config.json \
   --ckpt-path ./checkpoints/piano_1000_clips/jf94czsu/checkpoints/epoch=15-step=1000.ckpt \
@@ -80,7 +94,7 @@ python run_gradio.py \
   --model-config ./stable-audio-open-1.0/model_config.json \
   --ckpt-path ./sao_piano_1000clips.ckpt
 
-python evaluate_piano_model.py --model_config "./stable-audio-open-1.0/model_config.json" --finetuned_checkpoint "./checkpoints/piano_1000_clips/jf94czsu/checkpoints/epoch=15-step=1000.ckpt" --baseline_checkpoint "./stable-audio-open-1.0/model.ckpt" --num_samples 10 --output_dir evaluation_results
+python evaluation_piano.py
 
 # 7. After each run cleanup
 
@@ -102,3 +116,10 @@ source ~/.bashrc
 conda activate stable_audio
 
 cd stable-audio-tools
+
+## To scp something from remote server to local Downloads
+### Folder
+scp -r -i ~/.ssh/id_ed25519 -P 43549 root@38.147.83.14:/workspace/stable-audio-tools/evaluation_results ~/Downloads/
+### File
+scp -i ~/.ssh/id_ed25519 -P 43549 root@38.147.83.14:/workspace/stable-audio-tools/evaluation_results/results/comparison_table.txt ~/Downloads/
+

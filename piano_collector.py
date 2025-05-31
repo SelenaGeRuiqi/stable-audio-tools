@@ -15,11 +15,11 @@ class SimplePianoCollector:
     def __init__(self, output_dir="classical_piano_dataset"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
-        print(f"✅ Created output directory: {self.output_dir}")
+        print(f"Created output directory: {self.output_dir}")
         
         # Create subdirectories
         (self.output_dir / "processed_10s").mkdir(exist_ok=True)
-        print(f"✅ Created processed directory: {self.output_dir / 'processed_10s'}")
+        print(f"Created processed directory: {self.output_dir / 'processed_10s'}")
         
         self.processed_count = 0
         self.session = requests.Session()
@@ -37,9 +37,9 @@ class SimplePianoCollector:
         }
 
     def collect_piano_samples(self, target_clips=1000):
-        """Enhanced collection for 1000+ piano clips"""
-        print(f"🎹 Starting piano collection - Target: {target_clips} clips")
-        print("🔍 Enhanced approach for large-scale collection")
+        """Collection for 1000+ piano clips"""
+        print(f"Starting piano collection - Target: {target_clips} clips")
+        print("Enhanced approach for large-scale collection")
         print("="*60)
         
         # Expanded queries for more variety
@@ -100,7 +100,7 @@ class SimplePianoCollector:
             if self.processed_count >= target_clips:
                 break
                 
-            print(f"\n🔍 Query {i+1}/{len(queries)}: {query[:50]}...")
+            print(f"\nQuery {i+1}/{len(queries)}: {query[:50]}...")
             
             try:
                 results = self._search_internet_archive(query, max_results=20)  # More results per query
@@ -110,33 +110,32 @@ class SimplePianoCollector:
                     if self.processed_count >= target_clips:
                         break
                     
-                    print(f"   📥 Trying {j+1}/{len(results)}: {result.get('title', 'Unknown')[:40]}...")
+                    print(f"   Trying {j+1}/{len(results)}: {result.get('title', 'Unknown')[:40]}...")
                     
                     try:
                         success = self._download_and_process_simple(result)
                         if success:
                             successful_downloads += 1
-                            print(f"   ✅ Success! Total clips: {self.processed_count}")
+                            print(f"   Success! Total clips: {self.processed_count}")
                         else:
-                            print(f"   ❌ Failed to process")
+                            print(f"   Failed to process")
                     except Exception as e:
-                        print(f"   ❌ Error: {str(e)[:50]}")
+                        print(f"   Error: {str(e)[:50]}")
                     
                     time.sleep(0.3)  # Faster between downloads
                 
             except Exception as e:
-                print(f"   ❌ Query failed: {e}")
+                print(f"   Query failed: {e}")
             
             time.sleep(1)
         
-        print(f"\n📊 Collection Summary:")
+        print(f"\nCollection Summary:")
         print(f"   Successful downloads: {successful_downloads}")
         print(f"   Total clips created: {self.processed_count}")
         
         return self.processed_count
 
     def _search_internet_archive(self, query, max_results=20):
-        """Enhanced search with pagination for more results"""
         base_url = "https://archive.org/advancedsearch.php"
         
         all_results = []
@@ -244,7 +243,7 @@ class SimplePianoCollector:
             return False
 
     def _process_audio_simple(self, file_path, title):
-        """Simple audio processing to 10s segments"""
+        """Audio processing to 10s segments"""
         try:
             print(f"      Processing audio...")
             
@@ -285,6 +284,11 @@ class SimplePianoCollector:
                 
                 segment = segment[:segment_length]
                 
+                # Filter out silent/bad quality segments
+                if self._is_silent_or_bad_quality(segment, sr):
+                    print(f"      Skipped segment {seg_idx+1}: silent or bad quality")
+                    continue
+                
                 # Convert to stereo
                 if len(segment.shape) == 1:
                     segment_stereo = np.stack([segment, segment])
@@ -306,7 +310,7 @@ class SimplePianoCollector:
                 torchaudio.save(str(output_path), segment_tensor, sr)
                 
                 segments_created += 1
-                print(f"      ✅ Created: {output_filename}")
+                print(f"      Created: {output_filename}")
                 
                 # Stop at target
                 if self.processed_count >= 1000:  # Hard stop at 1000
@@ -319,16 +323,16 @@ class SimplePianoCollector:
             return 0
 
     def generate_simple_prompts(self):
-        """Generate simple but effective piano prompts"""
-        print(f"\n📝 Generating prompts for piano clips...")
+        """Generate piano prompts"""
+        print(f"\nGenerating prompts for piano clips...")
         
         processed_files = list((self.output_dir / "processed_10s").glob("*.wav"))
         
         if len(processed_files) == 0:
-            print("❌ No processed files found!")
+            print("No processed files found!")
             return {}
         
-        # Simple but effective piano prompts
+        # piano prompts
         prompt_templates = [
             "classical piano music, {tempo} BPM, {style}, {mood}",
             "piano solo, {tempo} BPM, {character}, {acoustic}",
@@ -337,15 +341,16 @@ class SimplePianoCollector:
         ]
         
         vocab = {
-            "tempo": [72, 80, 88, 96, 104, 112, 120, 132, 144],
-            "style": ["classical style", "romantic style", "baroque style", "contemporary style"],
-            "mood": ["contemplative", "peaceful", "dramatic", "gentle", "expressive"],
-            "character": ["lyrical melody", "flowing phrases", "expressive performance", "delicate touch"],
-            "acoustic": ["concert grand piano", "warm acoustics", "clear articulation", "rich resonance"],
-            "expression": ["cantabile", "legato phrasing", "dynamic expression", "musical phrasing"],
-            "quality": ["high quality recording", "professional performance", "studio recording"],
-            "genre": ["classical music", "art music", "concert music", "instrumental music"],
-            "atmosphere": ["intimate setting", "concert hall", "peaceful atmosphere", "refined ambiance"]
+            "tempo": [60, 63, 66, 69, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112, 116, 120, 126, 132, 138],
+            "style": ["classical style", "romantic style", "baroque style", "contemporary style", "impressionist style", "minimalist style", "modernist style", "neoclassical style", "avant-garde style", "renaissance style", "galant style", "rococo style", "early classical style", "late romantic style", "post-romantic style", "expressionist style", "serialist style", "experimental style", "traditional style", "progressive style"],
+            "mood": ["contemplative", "peaceful", "dramatic", "gentle", "expressive", "melancholic", "joyful", "serene", "passionate", "nostalgic", "ethereal", "mysterious", "triumphant", "tender", "wistful", "exuberant", "reflective", "tranquil", "yearning", "majestic"],
+            "character": ["lyrical melody", "flowing phrases", "expressive performance", "delicate touch", "bold gestures", "graceful movement", "virtuosic passages", "subtle nuances", "dramatic contrasts", "elegant phrasing", "rhythmic precision", "emotional depth", "technical brilliance", "poetic interpretation", "masterful control", "artistic sensitivity", "musical imagination", "dynamic range", "tonal beauty", "interpretive freedom"],
+            "acoustic": ["concert grand piano", "warm acoustics", "clear articulation", "rich resonance", "bright overtones", "balanced harmonics", "full-bodied sound", "pristine clarity", "natural reverberation", "intimate ambiance", "spacious soundstage", "detailed imaging", "smooth decay", "dynamic response", "tonal purity", "harmonic richness", "acoustic presence", "sonic depth", "timbral accuracy", "spatial dimension"],
+            "expression": ["cantabile", "legato phrasing", "dynamic expression", "musical phrasing", "rubato playing", "expressive timing", "tonal shaping", "articulate voicing", "emotional projection", "artistic interpretation", "dynamic contrast", "melodic shaping", "rhythmic flexibility", "tonal balance", "expressive nuance", "musical gesture", "phrase contouring", "dynamic control", "artistic freedom", "interpretive depth"],
+            "quality": ["high quality recording", "professional performance", "studio recording", "audiophile quality", "pristine capture", "masterful execution", "premium production", "expert engineering", "refined performance", "superior recording", "concert quality", "flawless execution", "reference quality", "exceptional clarity", "detailed capture", "balanced mix", "precise editing", "clean recording", "polished production", "artistic excellence"],
+            "genre": ["classical music", "art music", "concert music", "instrumental music", "chamber music", "solo repertoire", "recital music", "performance art", "contemporary classical", "modern classical", "baroque music", "romantic music", "piano literature", "keyboard music", "classical repertoire", "art performance", "serious music", "concert repertoire", "piano composition", "classical piano"],
+            "atmosphere": ["intimate setting", "concert hall", "peaceful atmosphere", "refined ambiance", "grand auditorium", "recital room", "chamber setting", "studio environment", "performance space", "acoustic venue", "resonant hall", "quiet studio", "live room", "concert venue", "practice room", "recording studio", "performance hall", "music room", "cathedral acoustics", "concert atmosphere"],
+            "composer": ["chopin", "beethoven", "mozart", "bach", "debussy", "liszt", "rachmaninoff", "schubert", "schumann", "brahms", "tchaikovsky", "ravel", "prokofiev", "scriabin", "grieg", "mendelssohn", "scarlatti", "haydn", "satie", "mussorgsky"]
         }
         
         prompts = {}
@@ -368,14 +373,14 @@ class SimplePianoCollector:
         with open(prompts_file, 'w') as f:
             json.dump(prompts, f, indent=2)
         
-        print(f"✅ Generated {len(prompts)} prompts")
-        print(f"📁 Saved to: {prompts_file}")
+        print(f"Generated {len(prompts)} prompts")
+        print(f"Saved to: {prompts_file}")
         
         return prompts
 
     def create_configs(self):
         """Create training configuration files"""
-        print(f"\n⚙️ Creating training configs...")
+        print(f"\nCreating training configs...")
         
         processed_files = list((self.output_dir / "processed_10s").glob("*.wav"))
         
@@ -447,17 +452,17 @@ def get_custom_metadata(info):
         with open(summary_file, 'w') as f:
             json.dump(summary, f, indent=2)
         
-        print(f"✅ Dataset config: {config_file}")
-        print(f"✅ Custom metadata: {metadata_file}")
-        print(f"✅ Summary: {summary_file}")
+        print(f"Dataset config: {config_file}")
+        print(f"Custom metadata: {metadata_file}")
+        print(f"Summary: {summary_file}")
         
         return summary
 
 def main():
-    print("🎹 SIMPLE PIANO COLLECTOR")
+    print("SIMPLE PIANO COLLECTOR")
     print("="*50)
-    print("🎯 Goal: Collect piano audio and create training dataset")
-    print("🔧 Simplified approach for better reliability")
+    print("Goal: Collect piano audio and create training dataset")
+    print("Simplified approach for better reliability")
     print("="*50)
     
     collector = SimplePianoCollector()
@@ -466,34 +471,34 @@ def main():
     existing_files = list((collector.output_dir / "processed_10s").glob("*.wav"))
     if existing_files:
         collector.processed_count = len(existing_files)
-        print(f"📁 Found {len(existing_files)} existing files")
+        print(f"Found {len(existing_files)} existing files")
     
     # Collect samples
-    print(f"\n🔍 PHASE 1: Collecting Audio")
+    print(f"\nPHASE 1: Collecting Audio")
     clips_collected = collector.collect_piano_samples(target_clips=1000)  # Target 1000 clips
     
     if clips_collected == 0:
-        print("❌ No clips collected. Check your internet connection.")
+        print("No clips collected. Check your internet connection.")
         return
     
     # Generate prompts
-    print(f"\n📝 PHASE 2: Generating Prompts")
+    print(f"\nPHASE 2: Generating Prompts")
     prompts = collector.generate_simple_prompts()
     
     # Create configs
-    print(f"\n⚙️ PHASE 3: Creating Configs")
+    print(f"\nPHASE 3: Creating Configs")
     summary = collector.create_configs()
     
     # Final report
-    print(f"\n🎉 COLLECTION COMPLETE!")
+    print(f"\nCOLLECTION COMPLETE!")
     print("="*40)
-    print(f"📊 Total clips: {summary['total_clips']}")
-    print(f"📁 Audio directory: {summary['files']['audio_dir']}")
-    print(f"⚙️  Dataset config: {summary['files']['dataset_config']}")
+    print(f"Total clips: {summary['total_clips']}")
+    print(f"Audio directory: {summary['files']['audio_dir']}")
+    print(f"Dataset config: {summary['files']['dataset_config']}")
     
     if summary['total_clips'] > 0:
-        print(f"\n🚀 READY FOR TRAINING!")
-        print(f"💡 Training command:")
+        print(f"\nREADY FOR TRAINING!")
+        print(f"Training command:")
         print(f"""python train.py \\
   --dataset-config {summary['files']['dataset_config']} \\
   --model-config ./stable-audio-open-1.0/model_config.json \\
