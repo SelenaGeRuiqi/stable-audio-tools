@@ -123,3 +123,5 @@ scp -r -i ~/.ssh/id_ed25519 -P 43549 root@38.147.83.14:/workspace/stable-audio-t
 ### File
 scp -i ~/.ssh/id_ed25519 -P 43549 root@38.147.83.14:/workspace/stable-audio-tools/evaluation_results/results/comparison_table.txt ~/Downloads/
 
+git config --global user.email "sege@ucsd.edu"
+git config --global user.name "SelenaGeRuiqi"
